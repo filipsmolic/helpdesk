@@ -1,0 +1,27 @@
+<div class="home-body">
+    <app-navbar (newTicketEvent)="handleNewTicket($event)"/>
+    <div class="tickets-container">
+        @if (tickets) {
+            @for (ticket of tickets; track ticket.id) {
+                <app-ticket class="app-ticket-comp" [ticket_] = "ticket"></app-ticket>
+              }
+          }
+    </div>
+</div>
+@if (newTicket) {
+    <div class="shade-background"></div>
+    <div class="new-ticket-container">
+        <form [formGroup]="ticketForm" (ngSubmit)="handleTicketSubmit()">
+            <div class="header-container">
+                <h1>Novi tiket</h1>
+            </div>
+            <div class="new-ticket-description">
+                <textarea placeholder="Unesite opis problema." formControlName="ticketDescription"></textarea>
+            </div>
+            <div class="new-ticket-button-container">
+                <button class="new-ticket-button" id="cancel-button" type="button" (click)="cancelNewTicket()">Odustani</button>
+                <button class="new-ticket-button" id="save-button" type="submit" [disabled]="!ticketForm.valid">Pošalji</button>
+            </div>
+        </form>
+    </div>
+}

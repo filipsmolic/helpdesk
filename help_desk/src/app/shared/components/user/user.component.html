@@ -1,0 +1,20 @@
+
+<div class="users-container">
+    <h2 class="user-header">{{user_?.username | uppercase}}</h2>
+    <div class="user-roles">
+        @for (role of user_?.roles; track role.id) {
+            <p class="user-role">{{role.name}}</p>
+        }
+    </div>
+    <div class="buttons-container">
+        @if (user_?.enabled) {
+            <p class="status" style="color: green;">Aktivan</p>
+            <button class="status-button" (click)="disableUser(user_?.id)">Onemogući</button>
+        }
+        @else {
+            <p class="status" style="color: rgba(175, 32, 32, 0.897);">Neaktivan</p>
+            <button class="status-button" (click)="enableUser(user_?.id)">Omogući</button>
+        }
+        <button class="status-button" id="edit-button" (click)="editRolesFunction()"><i class="bi bi-pencil"></i></button>
+    </div>
+</div>

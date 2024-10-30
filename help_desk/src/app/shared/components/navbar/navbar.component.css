@@ -1,0 +1,46 @@
+
+.navbar-container {
+    background-color: #3D3D3D;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.15rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buttons-container {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    padding-right: 2rem;
+}
+
+.navbar-button {
+    background: transparent;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: large;
+    color: white;
+    transition: color 0.3s ease;
+    min-width: fit-content;
+    margin-left: 3rem;
+}
+
+.navbar-button:hover {
+    cursor: pointer;
+    color: #999999;
+}
+
+.logo-container:hover {
+    cursor: pointer;
+}
+
+#navbar-username:hover {
+    cursor: default;
+    color: white;
+}
+
+
+

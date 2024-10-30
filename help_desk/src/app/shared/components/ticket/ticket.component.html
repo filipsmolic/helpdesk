@@ -1,0 +1,35 @@
+
+
+<div class="ticket-container">
+    <h2>{{"Ticket no. " + ticket_?.id}}</h2>
+    <div class="info-container">
+        <p class="ticket-description"> {{ticket_?.ticketDescription}} </p>
+        @if (ticket_?.status=='open') {
+            <p class="ticket-status" style="color: green;"> {{ticket_?.status}} </p>
+            @if (roles?.includes("ROLE_AGENT") || roles?.includes("ROLE_ADMIN")) {
+                <button class="change-status-button" (click)="changeOpenStatus(ticket_?.id)" style="color: rgb(255, 200, 81);">Prihvati</button>
+            }
+        }
+        @else if (ticket_?.status=='in_progress') {
+            <p class="ticket-status" style="color: rgb(255, 203, 92);"> {{ticket_?.status}} </p>
+            @if (roles?.includes("ROLE_AGENT") || roles?.includes("ROLE_ADMIN")) {
+                <button class="change-status-button" (click)="changeProgressStatus(ticket_?.id)" style="color: rgba(245, 32, 32, 0.897);">Zatvori</button>
+            }
+        }
+        @else if (ticket_?.status=='closed') {
+            <p class="ticket-status" style="color: rgba(175, 32, 32, 0.897);"> {{ticket_?.status}} </p>
+            @if (roles?.includes("ROLE_ADMIN")) {
+                <button class="change-status-button" (click)="changeClosedStatus(ticket_?.id)" style="color: rgb(5, 190, 5);">Otvori</button>
+            }
+        }
+        @if (roles?.includes("ROLE_ADMIN")) {
+            <button class="change-status-button" (click)="deleteTicket(ticket_?.id)"><i class="bi bi-trash3-fill" style="color:white"></i></button>
+        }
+    </div>
+    <div class="date-container">
+        <div id="username-small">
+            <small id = "submited-by">Submited by:</small><small>{{ticket_?.username}}</small>
+        </div>
+        <small>{{ticket_?.createdAt | date:'dd.MM.yyyy HH:mm:ss'}}</small>
+    </div>
+</div>

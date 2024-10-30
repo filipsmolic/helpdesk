@@ -1,0 +1,17 @@
+
+<div class="navbar-container">
+    <div class="logo-container">
+        <img src="assets\65e864132392d7d079e91bfb_5f33a27deadeb3bf14153e32_ericsson_20logo.png" alt="" width="200" height="40" (click)="navigateHome()"/>
+    </div>
+    <div class="buttons-container">
+        @if (roles.includes("ROLE_ADMIN") && !newUserButton) {
+            <button class="navbar-button" (click)="navigateToUsers()">KORISNICI</button>
+        }
+        @else if (roles.includes("ROLE_ADMIN") && newUserButton) {
+            <button class="navbar-button" (click)="handleNewUser()">NOVI KORISNIK</button>
+        }
+        <button class="navbar-button" (click)="handleNewTicket()">NOVI TIKET</button>
+        <button class="navbar-button" id="navbar-username" >{{username}}</button>
+        <button class="navbar-button" (click)="logoutUser()" >ODJAVA</button>
+    </div>
+</div>

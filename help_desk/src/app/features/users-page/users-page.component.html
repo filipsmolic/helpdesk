@@ -1,0 +1,118 @@
+
+
+<div class="users-home-body">
+    <app-navbar (newTicketEvent)="handleNewTicket($event)" (newUserEvent)="handleNewUser($event)"/>
+    <div class="users-container">
+        @if (users) {
+            @for (user of users; track user.id) {
+                <app-user class="app-user-comp" [user_] = "user" (newEditEvent)="handleEditUser($event)"></app-user>
+            }
+        }
+    </div>
+</div>
+@if (newTicket) {
+    <div class="shade-background"></div>
+    <div class="new-ticket-container">
+        <form [formGroup]="ticketForm" (ngSubmit)="handleTicketSubmit()">
+            <div class="header-container">
+                <h1>Novi tiket</h1>
+            </div>
+            <div class="new-ticket-description">
+                <textarea placeholder="Unesite opis problema." formControlName="ticketDescription"></textarea>
+            </div>
+            <div class="new-ticket-button-container">
+                <button class="new-ticket-button" id="cancel-button" type="button" (click)="cancelNewTicket()">Odustani</button>
+                <button class="new-ticket-button" id="save-button" type="submit" [disabled]="!ticketForm.valid">Pošalji</button>
+            </div>
+        </form>
+    </div>
+}
+@else if (newUser) {
+    <div class="shade-background"></div>
+    <div class="new-ticket-container" id="new-user-container">
+        <form [formGroup]="userForm" (ngSubmit)="handleUserSubmit()">
+            <div class="header-container">
+                <h1>Novi korisnik</h1>
+            </div>
+            <div class="input-container"> 
+                <div class="input-group">
+                    <input placeholder="Unesite korisničko ime" type="text" id="username" formControlName="username" />
+                    @if (userForm.get('username')?.invalid && formSubmited) {
+                        <small style="color: red">Korisničko ime obavezno</small>
+                    }
+                    <input placeholder="Unesite lozinku" id="password" type="text" formControlName="password" />
+                    @if (userForm.get('password')?.invalid && formSubmited) {
+                        <small style="color: red">Minimalno 5 znakova i 2 slova</small>
+                    }
+                </div>
+                <div class="checkbox-group" formGroupName="roles">
+                    <label class="checkbox">
+                        <input type="checkbox" value="ROLE_VIEWER" formControlName="ROLE_VIEWER">
+                        <span class="checkmark"></span>
+                        ROLE_VIEWER
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="ROLE_AGENT" formControlName="ROLE_AGENT">
+                        <span class="checkmark"></span>
+                        ROLE_AGENT
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="ROLE_ADMIN" formControlName="ROLE_ADMIN">
+                        <span class="checkmark"></span>
+                        ROLE_ADMIN
+                    </label>
+                    @if (checkBoxError) {
+                        <small style="color: red">Odaberite barem jednu ulogu</small>
+                    }
+                </div>
+            </div>
+            <div class="new-ticket-button-container">
+                <button class="new-ticket-button" id="cancel-button" type="button" (click)="cancelNewUser()">Odustani</button>
+                <button class="new-ticket-button" id="save-button" type="submit">Kreiraj</button>
+            </div>
+        </form>
+    </div>
+}
+@else if (editUser) {
+    <div class="shade-background"></div>
+    <div class="new-ticket-container" id="new-user-container">
+        <form [formGroup]="updateUserForm" (ngSubmit)="handleEditUserSubmit()">
+            <div class="header-container">
+                <h1>Ažuriraj korisnika</h1>
+            </div>
+            <div class="input-container"> 
+                <div class="input-group">
+                    <input type="text" id="username" formControlName="username" readonly />
+                    <input placeholder="Unesite novu lozinku" id="password" type="text" formControlName="password" />
+                    @if (updateUserForm.get('password')?.invalid) {
+                        <small style="color: red">Minimalno 5 znakova i 2 slova</small>
+                    }
+                </div>
+                <div class="checkbox-group" formGroupName="roles">
+                    <label class="checkbox">
+                        <input type="checkbox" value="ROLE_VIEWER" formControlName="ROLE_VIEWER">
+                        <span class="checkmark"></span>
+                        ROLE_VIEWER
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="ROLE_AGENT" formControlName="ROLE_AGENT">
+                        <span class="checkmark"></span>
+                        ROLE_AGENT
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="ROLE_ADMIN" formControlName="ROLE_ADMIN">
+                        <span class="checkmark"></span>
+                        ROLE_ADMIN
+                    </label>
+                    @if (checkBoxError) {
+                        <small style="color: red">Odaberite barem jednu ulogu</small>
+                    }
+                </div>
+            </div>
+            <div class="new-ticket-button-container">
+                <button class="new-ticket-button" id="cancel-button" type="button" (click)="cancelEditUser()">Odustani</button>
+                <button class="new-ticket-button" id="save-button" type="submit">Ažuriraj</button>
+            </div>
+        </form>
+    </div>
+}

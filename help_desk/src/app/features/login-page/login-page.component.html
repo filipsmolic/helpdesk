@@ -1,0 +1,23 @@
+
+<div class="login-body">
+    <div class="login-outer-container">
+        <img src="assets\the-office-clipart-cartoon-of-office-with-desk-vector_605930_wh860.png" alt="" id="login-img" priority/>
+        <div class="login-container">
+            <h2>Dobrodošli<br />na<br />HelpDesk</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+                <input placeholder="Unesite korisničko ime" type="text" id="login-username" formControlName="username" />
+                @if (loginForm.get('username')?.invalid && formSubmited) {
+                    <small style="color: red; font-size: small; margin-top: 5px;">Korisničko ime obavezno</small>
+                }
+                <input placeholder="Unesite lozinku" id="login-password" type="password" formControlName="password" />
+                @if (loginForm.get('password')?.invalid && formSubmited) {
+                    <small style="color: red; font-size: small; margin-top: 5px;">Lozinka obavezna</small>
+                }
+                @if (loginFailed) {
+                    <small style="color: red; font-size: small; margin-top: 5px;">Neuspješna prijava.</small>
+                }
+                <button class="login-button" type="submit">Prijava</button>
+            </form>
+        </div>
+    </div>
+</div>

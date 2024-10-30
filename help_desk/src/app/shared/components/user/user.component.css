@@ -1,0 +1,58 @@
+
+.users-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    background-color: #C2C2C2;
+    padding: 1rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    margin: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+}
+
+.user-header {
+    width: 125px;
+    align-items: start;
+}
+
+.status {
+    font-weight: 500;
+    margin-right: 5rem;
+}
+
+.status-button {
+    background-color: #3D3D3D;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 10px;
+    padding: 0.9rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border: none;
+    cursor: pointer;
+    height: fit-content;
+}
+
+.status-button:hover {
+    outline: 1px solid white;
+} 
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#edit-button {
+    margin-left: 2rem;
+}

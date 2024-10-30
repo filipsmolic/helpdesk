@@ -1,0 +1,66 @@
+
+.ticket-container {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    background-color: #C2C2C2;
+    padding: 1rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    margin: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.date-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-description {
+    width: 70%;
+}
+
+.change-status-button {
+    background-color: #3D3D3D;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 10px;
+    padding: 0.9rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.change-status-button:hover {
+    outline: 1px solid white;
+} 
+
+#username-small {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    display: flex;
+    justify-content: start;
+}
+
+#submited-by {
+    margin-right: 0.5rem;
+    font-weight: 500;
+}
